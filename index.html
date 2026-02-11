@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Password Analyzer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Security Toolkit</p>
+          <h1>Password Analyzer</h1>
+          <p>
+            Inspect password strength, discover risky patterns, and run a privacy-safe breach
+            check using k-anonymity.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-metric">
+            <span class="metric-label">Estimated entropy</span>
+            <strong id="entropy">0 bits</strong>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-label">Overall score</span>
+            <strong id="score">0 / 100</strong>
+          </div>
+          <div class="hero-metric">
+            <span class="metric-label">Breach status</span>
+            <strong id="breach-status">Not checked</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <label class="field">
+          <span>Password to analyze</span>
+          <div class="input-group">
+            <input id="password" type="password" autocomplete="new-password" placeholder="Enter a password" />
+            <button id="toggle" type="button">Show</button>
+            <button id="copy" type="button">Copy</button>
+          </div>
+        </label>
+        <div class="meter">
+          <div id="meter-fill" class="meter-fill"></div>
+        </div>
+        <p id="strength-label" class="strength-label">Add a password to begin.</p>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Strength checklist</h2>
+          <ul id="checklist" class="checklist"></ul>
+        </div>
+        <div class="panel">
+          <h2>Risk insights</h2>
+          <div class="risk" id="risk"></div>
+        </div>
+        <div class="panel">
+          <h2>Breach checks</h2>
+          <p>
+            The breach test uses a k-anonymity lookup against the Have I Been Pwned range API.
+            Only the first five characters of a SHA-1 hash are sent.
+          </p>
+          <div class="breach-actions">
+            <button id="breach" type="button">Run breach check</button>
+            <span id="breach-detail" class="breach-detail">Offline list only.</span>
+          </div>
+          <div class="breach-result" id="breach-result"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Recommendations</h2>
+        <div id="recommendations" class="recommendations"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built for privacy-first password analysis.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
